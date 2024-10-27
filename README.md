@@ -1,9 +1,8 @@
-# SQL queries for educational purposes
+# SQL Notes
 
 ## Description:
 This repository contains SQL query files covering various topics, from basic SQL commands to more complex queries. 
-Each file focuses on a different SQL concept, feature, or command. 
-These files are created for educational purposes to help learners understand SQL better.
+Each file focuses on a different SQL concept, feature, or command.
 
 ## The repository contains 20 SQL files, each focusing on different SQL topics, such as:
 - File 01: Introduction
@@ -23,7 +22,7 @@ These files are created for educational purposes to help learners understand SQL
 - File 15: Views part 2
 - File 16: Variables
 - File 17: Stored proc
-- File 18: User Defined Function
+- File 18: User-Defined-Function
 - File 19: Table function
 - File 20: Dynamic cursor
 
@@ -33,11 +32,11 @@ These files are created for educational purposes to help learners understand SQL
 
 ## Prerequisites:
 - Microsoft SQL Server Management Studio (SSMS) or any other SQL-compatible editor (All the codes are written on the SSMS platform, so you might have to make a few changes in the syntax if you are using any other platform.
-- A sample database (or you can use the one which I have uploaded to this repository)
+- A sample database (or you can use the one that I have uploaded to this repository)
 
 ## Features
 - Covers both basic and advanced SQL concepts.
-- Demonstrates various SQL commands, from SELECT queries to JOINs, subqueries, and Common Table Expression
+- Demonstrates various SQL commands, from SELECT queries to JOINS, subqueries, and Common Table Expression
 - Educational focus for beginners to intermediate SQL users.
 
 ## Contributing
