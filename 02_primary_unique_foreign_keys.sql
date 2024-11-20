@@ -1,16 +1,17 @@
+-- Mentioning the database name which we will use for writing this query
 USE sql_wkday_20240228
 
 DROP TABLE friends_details  -- deletes the table and its details from the database
 
 DROP TABLE IF EXISTS friends -- deletes the table if it already exists else ignores
 
--- creating table with mandatory columns
+-- creating a table with mandatory columns
 CREATE TABLE friends
 (
 	first_name VARCHAR (100) NOT NULL, -- data cannot be null
 	last_name VARCHAR (100) NOT NULL, -- data cannot be null
 	email VARCHAR (100), -- data can be null
-	gender CHAR (1) NOT NULL,
+	gender CHAR (1) NOT NULL, -- gender can be either M or F
 	phone CHAR(10) NOT NULL,
 	[address] VARCHAR (100),
 	dob DATE,
@@ -97,10 +98,9 @@ CREATE TABLE students
 
 INSERT INTO students
 VALUES 
-('Ashok','Kumar','B.E. (MECH)', 98);
+('Ashok', 'Kumar',' B.E. (MECH)', 98);
 
--- DECIMAL (6,0): 6 is the precision value (total number of spaces including decimal)
---				: 2 is the scale value (number of spaces after decimal)
+-- DECIMAL (6,0): 6 is the precision value (total number of spaces including the decimal), 2 is the scale value (number of spaces after the decimal)
 
 -- to identify every row uniquely by using PRIMARY KEY	
 -- PRIMARY KEY is a column(s) which is unique to every row
@@ -116,9 +116,9 @@ CREATE TABLE students
 	last_name VARCHAR (40) NOT NULL,
 	course_name VARCHAR (40) NOT NULL,
 	marks DECIMAL(6,2) NOT NULL,
-	PRIMARY KEY (student_id) -- can have more than one column
+	PRIMARY KEY (student_id) -- we can have more than one column
 );
--- you can also write primary key beside the name of column
+-- You can also write the primary key beside the name of the column
 --eg. student_id int PRIMARY KEY, (need not be in caps)
 
 EXEC sp_help students
@@ -126,12 +126,11 @@ EXEC sp_help students
 INSERT INTO students
 VALUES 
 (101,'Ashok','Kumar','B.E. (MECH)', 98);
--- cannot run the querry again, since duplicate values cannot be entered in the primary key
 
 INSERT INTO students
 VALUES 
 (102,'Ashok','Kumar','B.E. (MECH)', 98);
--- will distinguish first ashok from the other by primary key
+-- will distinguish the first ashok from the other by primary key
 
 SELECT * FROM students
 
@@ -140,9 +139,9 @@ VALUES
 (NULL,'Ashok','Kumar','B.E. (MECH)', 98);
 -- will show an error as primary key cannot have a null value
 
--- UNIQUE KEY: cannot have duplicates but can have one null value
---			   second null value will become the duplicate of the first null value
---			   we can also put a constraint on UNIQUE KEY with NOT NULL command
+
+-- UNIQUE KEY: cannot have duplicates but can have one null value (second null value will become the duplicate of the first null value)
+-- We can also put a constraint on UNIQUE KEY with NOT NULL command
 -- PRIMARY KEY: cannot have duplicate or a null value
 
 DROP TABLE IF EXISTS friends_table;
@@ -172,7 +171,6 @@ VALUES
 	'1987-07-12',
 	13000
 )
--- will show an error because unique key is getting repeated
 
 INSERT INTO friends_table
 VALUES
@@ -227,7 +225,7 @@ VALUES
 	100,
 	85000
 )
--- the table will by default have a value of 10 in discount column
+-- The table will by default have a value of 10 in the discount column
 
 SELECT * FROM store
 
@@ -242,12 +240,12 @@ INSERT INTO store
 VALUES
 (
 	1009,
-	'Apple ipad',
+	'Apple iPad',
 	100,
 	85000,
 	20
 )
--- here the discount value was given by the user
+-- Here the discount value was given by the user
 
 -- assigning null value to default
 INSERT INTO store
@@ -266,9 +264,11 @@ VALUES
 	95000,
 	null
 )
--- you can also assign not null command beside default command
+-- You can also assign a not null command beside the default command
 
--- FOREIGN KEY constraint: column refers to take values given in the primary key of the reference table
+	
+-- FOREIGN KEY constraint:
+-- column refers to take values given in the primary key of the reference table
 DROP TABLE IF EXISTS courses
 CREATE TABLE courses
 (
@@ -280,7 +280,7 @@ INSERT INTO courses
 VALUES 
 ('CSE', 'Computer science and engineering', 'Vinod Dham'),
 ('EEE', 'Electrical engineering', 'H.C. Verma'),
-('ECE', 'Electronics and communication engineering', 'D.K. Reddy');
+('ECE', 'Electronics and Communication Engineering', 'D.K. Reddy');
 
 SELECT * FROM courses
 
@@ -292,7 +292,7 @@ CREATE TABLE new_students
 	phone CHAR (10) NOT NULL UNIQUE,
 	course_id CHAR (3) NOT NULL,
 	FOREIGN KEY (course_id) REFERENCES courses(course)
-); -- foreign key column and reference table column can have same names
+); -- foreign key column and reference table column can have the same names, but it is not necessary
 
 INSERT INTO new_students
 VALUES 
@@ -321,7 +321,7 @@ CREATE TABLE ec_activity
 INSERT INTO ec_activity
 VALUES
 	('BKTBL', 'Basketball'),
-	('CRICK','Cricket');
+	('CRICK', 'Cricket');
 
 DROP TABLE IF EXISTS newstudents2
 
@@ -344,9 +344,8 @@ VALUES
 
 SELECT * FROM new_students2
 
--- you cannot drop the parent table if it is in reference of the child table
--- to drop the parent table, you will first have to drop the child table
--- and then drop the parent table.
+-- You cannot drop the parent table if it is in reference to the child table
+-- To drop the parent table, you will first have to drop the child table
 
 --CHECK command
 CREATE TABLE new_students3
@@ -378,13 +377,14 @@ EXEC sp_help new_students3
 
 -- to create autogenerated synthetic key
 DROP TABLE IF EXISTS new_students4
+
 CREATE TABLE new_students4
 (
 	student_id INT PRIMARY KEY IDENTITY (1001,1),
-	-- identity command says that the value should start from 1 and increment next value by 1.
-	-- the initital number can be of our choice
+	-- identity command says that the value should start from 1001 and increment the next value by 1.
+	-- the initial number can be of our choice
 	student_name VARCHAR (100) NOT NULL,
-	gender CHAR (1) NOT NULL CHECK (gender IN ('M','F')), 
+	gender CHAR (1) NOT NULL CHECK (gender IN ('M', 'F')), 
 	phone CHAR (10) NOT NULL UNIQUE,
 	course_id CHAR (3) NOT NULL,
 	activity_id CHAR (5) NOT NULL,
@@ -392,8 +392,8 @@ CREATE TABLE new_students4
 	FOREIGN KEY (activity_id) REFERENCES ec_activity(activity_id)
 ); 
 
--- you dont need to give the student_id, SQL will itself generate it
--- you have to give the column name specifically
+-- you do not need to give the student_id, SQL will itself generate it
+-- You have to give the column name specifically
 
 INSERT INTO new_students4
 (student_name, gender, phone, course_id, activity_id)
@@ -421,6 +421,6 @@ VALUES
 ('Samit Bhishikar','M','8090387926','EEE','CRICK'),
 ('Kusum Shripad','F','8870543210','ECE','CRICK')
 
--- CONCATANATE
+-- CONCATANATE: will concatenate column elements mentioned in the CONCAT()
 SELECT *, CONCAT (course_id,student_id) AS roll_number
 FROM new_students4
