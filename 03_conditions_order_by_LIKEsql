@@ -1,6 +1,7 @@
+-- Mentioning the database name which we will use to write this query
 USE sql_wkday_20240228
 
--- you can excute the table in one querry and use it in other querry in the SAME database
+-- you can execute the table in one query and use it in another query in the SAME database
 -- FETCHING data from the table
 SELECT * FROM employees
 
@@ -12,32 +13,20 @@ WHERE employee_dept = 'SD-DB'
 SELECT * FROM employees
 WHERE salary > 50000
 
---fetch all records where employee word=ks in SD-DB dept and salary of the employee
--- should be greater than 50000
+-- AND operator: will display records only when both conditions are satisfied
+-- fetch all records where the employee works in SD-DB dept and salary of the employee should be greater than 50000
 SELECT * FROM employees
 WHERE employee_dept = 'SD-DB' 
 AND salary > 50000
 
--- AND operator
---- condition1 AND condition2
---- TRUE and TRUE == TRUE then record will be displayed
---- TRUE and FALSE == FALSE, record will not be dsiplayed
---- FALSE and TRUE == FALSE, record will not be displayed
---- FLASE and FALSE == FALSE, record will not be displayed
-
+-- OR operator: will display records when either of the two or both conditions are satisfied
 -- fetch employee_dept = SD-DB or SD-WEB
 SELECT * FROM employees
 WHERE employee_dept = 'SD-DB' 
 OR employee_dept = 'SD-WEB' 
 
--- OR operator
---- condition1 AND condition2
---- TRUE or TRUE == TRUE then record will be displayed
---- TRUE or FALSE == TRUE, record will be dsiplayed
---- FALSE or TRUE == TRUE, record will  be displayed
---- FLASE or FALSE == FALSE, record will not be displayed
 
--- NOT operator
+-- NOT operator: will display the records when the condition given is not satisfied	
 -- fetch employee_dept is not SD-WEB 
 SELECT * FROM employees
 WHERE NOT employee_dept = 'SD-WEB' --OR employee_dept != 'SD-WEB'
@@ -66,15 +55,15 @@ FROM
 WHERE 
 	employee_dept IN ('SD-DB', 'SD-WEB')
 
--- get employee whose substring has KUMAR in employee_id
+-- get employees whose substring has KUMAR in employee_id
 SELECT *
 FROM 
 	employees
 WHERE 
 	employee_name LIKE '%Kumar%'
--- % is known as wild card character
+-- % is known as a wild card character
 -- % means 0 or more character
--- in this case there can be 0 or more character in the start or end of KUMAR
+-- In this case, there can be 0 or more characters in the start or end of KUMAR
 
 SELECT *
 FROM 
@@ -101,23 +90,23 @@ SELECT *
 FROM 
 	employees
 WHERE 
-	employee_name LIKE '___%' -- three underscore
+	employee_name LIKE '___' -- three underscore
 
--- fetch employee last name having three characters
+-- fetch employees last name having three characters
 SELECT *
 FROM 
 	employees
 WHERE 
-	employee_name LIKE '% ___' -- three underscore
+	employee_name LIKE '% ___' -- a space before three underscore
 
--- fetch employee middle name having three characters
+-- fetch employees middle name having three characters
 SELECT *
 FROM 
 	employees
 WHERE 
-	employee_name LIKE '% ___ %' -- three underscore
+	employee_name LIKE '% ___ %' -- three underscore before and after space
 
--- fetch employees in SD-__ has two characters
+-- fetch employees in SD-__ has two characters and salary sis greater than 100000
 SELECT *
 FROM 
 	employees
@@ -136,10 +125,8 @@ ORDER BY employee_dept
 SELECT * FROM employees
 ORDER BY salary DESC -- in descending order
 
--- fetch list of all employees
---- having 4 lettered middle name
---- words in either SD-DB or SD-WEB department
---- order the resuly in descending salary
+-- fetch list of all employees: having 4 lettered middle name, words in either SD-DB or SD-WEB department
+--- Order the result in descending salary
 
 SELECT * FROM employees
 WHERE
@@ -149,7 +136,7 @@ AND
 ORDER BY salary DESC
 
 --Solution 2
--- you can also put all the conDitions in brackets
+-- you can also put all the conditions in brackets
 SELECT * FROM employees
 WHERE
 	(employee_name LIKE '% ____ %') 
