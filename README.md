@@ -4,6 +4,8 @@
 This repository contains SQL query files covering various topics, from basic SQL commands to more complex queries. 
 Each file focuses on a different SQL concept, feature, or command.
 
+These notes are robust and were created for my reference in the future. However, I am open to sharing these notes with people who are still in the learning process, and it might be helpful to them in some cases. These notes need some refining (like file name change and better comments in the query). I'm currently editing these files whenever I am available. I would highly appreciate your patience and understanding on this. 
+
 ## The repository contains 20 SQL files, each focusing on different SQL topics, such as:
 - File 01: Introduction
 - File 02: Insert constraints
@@ -46,4 +48,4 @@ Contributions, suggestions, and improvements are welcome!
 Jetal Bhanarkar - [bhanarkarjetal@gmail.com] - [https://www.linkedin.com/in/jetal-bhanarkar]
 
 ## Acknowledgments
-- Thanks to various SQL tutorials and courses from 1StepGrow academy, India, that have inspired me to create this.
+- Thanks to various SQL tutorials and courses from 1StepGrow academy, India, that have helped me learn and inspired me to create this.
