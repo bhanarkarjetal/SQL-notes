@@ -43,7 +43,7 @@ Each file focuses on a different SQL concept, feature, or command.
 Contributions, suggestions, and improvements are welcome!
 
 ## Contact
-Jetal Bhanarkar - (Gmail)[bhanarkarjetal@gmail.com], (LinkedIn)[https://www.linkedin.com/in/jetal-bhanarkar]
+Jetal Bhanarkar - [Gmail](bhanarkarjetal@gmail.com), [LinkedIn](https://www.linkedin.com/in/jetal-bhanarkar)
 
 ## Acknowledgments
 - Thanks to various SQL tutorials and courses from 1StepGrow academy, India, that have helped me learn and inspired me to create this.
